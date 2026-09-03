@@ -19,9 +19,7 @@ Responsável por todo o fluxo de engenharia de features, treinamento dos modelos
 
 * **`engenharia_de_dados.ipynb`**: Tratamento de dados, criação de novas variáveis (feature engineering) e preparação do dataset para o consumo dos algoritmos de Machine Learning.
 * **`modelo_rf_gridsearch.ipynb`**: Treinamento de um modelo Random Forest (RF) utilizando GridSearch para a busca exaustiva de hiperparâmetros.
-* **`modelo_rf_optuna.ipynb`**: Treinamento e otimização do modelo Random Forest utilizando o framework Optuna, buscando maior eficiência computacional na tunagem.
 * **`modelo_xgb_gridsearch.ipynb`**: Implementação de um modelo XGBoost otimizado via GridSearch.
-* **`modelo_xgb_optuna.ipynb`**: Implementação e otimização avançada do XGBoost utilizando Optuna.
 * **`motor_de_inferencia.ipynb`**: O motor de predição final. Consome os modelos treinados e os dados mais recentes para gerar as previsões dos resultados das partidas.
 * **`nfl_features_ml_2021_2025.parquet`**: Base de dados tratada e estruturada (formato colunar de alta performance) englobando as features das temporadas de 2021 a 2025.
 
