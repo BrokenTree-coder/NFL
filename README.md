@@ -21,26 +21,26 @@ Responsável por todo o fluxo inicial de engenharia de features, treinamento dos
 Focado na extração de conhecimento avançado através dos **4 Pilares do Data Mining**. O objetivo desta camada é descobrir padrões ocultos, identificar anomalias estatísticas e mapear taticamente a NFL para, futuramente, alimentar modelos preditivos superiores aos baselines.
 
 * **`EDA.ipynb`**: Notebook base de Análise Exploratória de Dados.
-* **`association_rules.ipynb`**: Mineração de Regras de Associação (FP-Growth) para descobrir correlações táticas diretas (ex: Controle de Relógio + Turnovers Forçados).
+* **`association_rules.ipynb`**: Mineração de Regras de Associação (FP-Growth) para descobrir correlações táticas diretas.
 * **`📁 outliers`**: Deteção de anomalias estatísticas extremas mascaradas como sucesso.
   * **`iso_forest.ipynb`**: Aplicação de Isolation Forest.
-  * **`LOF.ipynb`**: Aplicação de Local Outlier Factor (Identificação de campanhas "aberrações históricas").
-* **`📁 dim_redux`**: Combate à maldição da dimensionalidade focando na explicabilidade macro.
+  * **`LOF.ipynb`**: Aplicação de Local Outlier Factor.
+* **`📁 dim_redux`**: Redução da dimensionalidade pra 2D, focando na explicabilidade macro, e tentando extrair insights.
   * **`etl_data.ipynb`**: Preparação dos dados específicos para redução.
+  * **`dados_reducao.parquet`**: Dataset intermediário salvo pra uso nos modelos, é a saída do 'etl_data.ipynb'.
   * **`PCA.ipynb`**: Abordagem linear (descartada do pipeline principal por baixa performance topológica).
   * **`t-SNE.ipynb`**: Abordagem de topologia local e isolamento de extremos.
   * **`UMAP.ipynb`**: Abordagem global (State of the Art) para estratificação da liga.
-  * **`dados_reducao.parquet`**: Dataset intermediário salvo com as coordenadas geométricas (TSNE1/2, UMAP1/2).
 * **`📁 clustering`**: Agrupamento matemático (Identidade e DNA das franquias).
-  * **`HDBSCAN.ipynb`**: Agrupamento baseado em densidade hierárquica rodando sobre os espaços reduzidos. Identifica a estratificação das elites, classes médias e "fossas de perdedores".
+  * **`HDBSCAN.ipynb`**: Agrupamento baseado em densidade hierárquica rodando sobre os espaços reduzidos obtidos em 'dim_redux'. Identifica a estratificação das elites, classes médias, e times ruins.
   * **`GMM.ipynb`**: Modelos de Mistura Gaussiana (Probabilísticos) para *soft clustering* de times em transição tática *(Próximo passo)*.
 
 ## 🛠️ Tecnologias Utilizadas
 
 * **Linguagem:** Python
 * **Ambiente:** Jupyter Notebook
-* **Bibliotecas Preditivas:** Scikit-learn, XGBoost
-* **Bibliotecas de Mineração:** `hdbscan`, `umap-learn`, `mlxtend` (Regras de Associação)
+* **Bibliotecas Preditivas (Baseline):** `scikit-learn` (Random Forest, GridSearchCV), `xgboost`
+* **Bibliotecas de Mineração:** `scikit-learn` (t-SNE, Outliers, GMM), `hdbscan` (Clustering de Densidade), `umap-learn` (Redução Topológica), `mlxtend` (Regras de Associação)
 * **Manipulação e Estruturas:** Pandas, Numpy, formato Parquet
 
 ## 🚀 Como Executar
