@@ -1,39 +1,51 @@
-# 🏈 NFL Game Prediction: Data Mining & Ensemble Models
+# 🏈 NFL Game Prediction: Data Mining & Machine Learning
 
-Este repositório contém um pipeline completo de Machine Learning focado na previsão de resultados de jogos da NFL (National Football League). O projeto está dividido em duas frentes principais: Mineração de Dados (exploração e descoberta de padrões) e Modelagem Ensemble (treinamento, otimização e inferência).
+Este repositório contém um pipeline completo focado na previsão de resultados de jogos da NFL (2021-2025). O projeto é desenvolvido em iterações, iniciando com modelos preditivos base, seguidos por uma profunda exploração de mineração de dados em quatro pilares matemáticos, com o objetivo final de extrair a verdadeira "topologia" e o "DNA" das franquias para otimizar futuras predições.
 
 ## 🗂️ Estrutura do Repositório
 
-O projeto é organizado nos seguintes diretórios:
+O projeto está organizado estruturalmente em duas frentes principais que refletem as iterações de desenvolvimento:
 
-### 1. `📁 mining`
+### 1. `📁 baseline` (Iteração 1)
 
-Focado na exploração e compreensão da base de dados.
+Responsável por todo o fluxo inicial de engenharia de features, treinamento dos modelos preditivos de referência e realização das inferências brutas.
 
-* **`EDA.ipynb`**: Notebook de Análise Exploratória de Dados (Exploratory Data Analysis). Aqui são investigadas as distribuições das variáveis, correlações e características históricas dos jogos da NFL.
-* **🚧 Roadmap (Em breve):** Introdução e aplicação dos **4 Pilares do Data Mining**, aprofundando a extração de conhecimento da base de dados antes da modelagem.
+* **`init_data_eng.ipynb`**: Tratamento de dados, criação de novas variáveis (feature engineering) e preparação do dataset.
+* **`rf_baseline.ipynb`**: Treinamento e validação de um modelo Random Forest (RF) de referência (baseline).
+* **`xgb_baseline.ipynb`**: Implementação de um modelo XGBoost de referência.
+* **`predictions.ipynb`**: O motor de inferência que consome os modelos treinados para gerar as previsões das partidas.
+* **`nfl_features_ml_2021_2025.parquet`**: Base de dados tratada e estruturada englobando as features originais (2021 a 2025).
 
-### 2. `📁 ensemble`
+### 2. `📁 mining` (Iteração 2)
 
-Responsável por todo o fluxo de engenharia de features, treinamento dos modelos preditivos e realização das inferências para os jogos da NFL.
+Focado na extração de conhecimento avançado através dos **4 Pilares do Data Mining**. O objetivo desta camada é descobrir padrões ocultos, identificar anomalias estatísticas e mapear taticamente a NFL para, futuramente, alimentar modelos preditivos superiores aos baselines.
 
-* **`engenharia_de_dados.ipynb`**: Tratamento de dados, criação de novas variáveis (feature engineering) e preparação do dataset para o consumo dos algoritmos de Machine Learning.
-* **`modelo_rf_gridsearch.ipynb`**: Treinamento de um modelo Random Forest (RF) utilizando GridSearch para a busca exaustiva de hiperparâmetros.
-* **`modelo_xgb_gridsearch.ipynb`**: Implementação de um modelo XGBoost otimizado via GridSearch.
-* **`motor_de_inferencia.ipynb`**: O motor de predição final. Consome os modelos treinados e os dados mais recentes para gerar as previsões dos resultados das partidas.
-* **`nfl_features_ml_2021_2025.parquet`**: Base de dados tratada e estruturada (formato colunar de alta performance) englobando as features das temporadas de 2021 a 2025.
+* **`EDA.ipynb`**: Notebook base de Análise Exploratória de Dados.
+* **`association_rules.ipynb`**: Mineração de Regras de Associação (FP-Growth) para descobrir correlações táticas diretas (ex: Controle de Relógio + Turnovers Forçados).
+* **`📁 outliers`**: Deteção de anomalias estatísticas extremas mascaradas como sucesso.
+  * **`iso_forest.ipynb`**: Aplicação de Isolation Forest.
+  * **`LOF.ipynb`**: Aplicação de Local Outlier Factor (Identificação de campanhas "aberrações históricas").
+* **`📁 dim_redux`**: Combate à maldição da dimensionalidade focando na explicabilidade macro.
+  * **`etl_data.ipynb`**: Preparação dos dados específicos para redução.
+  * **`PCA.ipynb`**: Abordagem linear (descartada do pipeline principal por baixa performance topológica).
+  * **`t-SNE.ipynb`**: Abordagem de topologia local e isolamento de extremos.
+  * **`UMAP.ipynb`**: Abordagem global (State of the Art) para estratificação da liga.
+  * **`dados_reducao.parquet`**: Dataset intermediário salvo com as coordenadas geométricas (TSNE1/2, UMAP1/2).
+* **`📁 clustering`**: Agrupamento matemático (Identidade e DNA das franquias).
+  * **`HDBSCAN.ipynb`**: Agrupamento baseado em densidade hierárquica rodando sobre os espaços reduzidos. Identifica a estratificação das elites, classes médias e "fossas de perdedores".
+  * **`GMM.ipynb`**: Modelos de Mistura Gaussiana (Probabilísticos) para *soft clustering* de times em transição tática *(Próximo passo)*.
 
 ## 🛠️ Tecnologias Utilizadas
 
 * **Linguagem:** Python
 * **Ambiente:** Jupyter Notebook
-* **Bibliotecas de Modelagem:** Scikit-learn (Random Forest, GridSearch), XGBoost
-* **Otimização de Hiperparâmetros:** Optuna, GridSearchCV
-* **Manipulação de Dados:** Pandas, Numpy
+* **Bibliotecas Preditivas:** Scikit-learn, XGBoost
+* **Bibliotecas de Mineração:** `hdbscan`, `umap-learn`, `mlxtend` (Regras de Associação)
+* **Manipulação e Estruturas:** Pandas, Numpy, formato Parquet
 
-## 🚀 Como executar
+## 🚀 Como Executar
 
 1. Clone o repositório.
-2. Certifique-se de ter as bibliotecas necessárias instaladas (`pip install numpy scipy jupyter ipykernel pandas matplotlib seaborn scikit-learn nflreadpy`).
-3. Inicie a exploração pela pasta `mining/EDA.ipynb` para entender os dados.
-4. Para reproduzir os modelos, siga a ordem lógica na pasta `ensemble`: execute primeiro a `engenharia_de_dados.ipynb`, seguido pelo treinamento dos modelos e, por fim, o `motor_de_inferencia.ipynb`.
+2. Certifique-se de ter as dependências completas instaladas (`pip install numpy pandas matplotlib scikit-learn xgboost hdbscan umap-learn mlxtend`).
+3. **Para reproduzir os baselines:** Entre na pasta `baseline/` e rode a esteira na seguinte ordem: `init_data_eng.ipynb` ➡️ `rf_baseline.ipynb` / `xgb_baseline.ipynb` ➡️ `predictions.ipynb`.
+4. **Para acompanhar a descoberta tática:** Entre na pasta `mining/` e avance através dos 4 pilares, começando pelas regras de associação, filtragem de outliers, redução de dimensionalidade e finalizando na construção de clusters. A execução das reduções gera o arquivo intermediário `dados_reducao.parquet` necessário para a pasta `clustering`.
