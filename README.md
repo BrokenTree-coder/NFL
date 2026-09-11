@@ -33,7 +33,9 @@ Focado na extração de conhecimento avançado através dos **4 Pilares do Data 
   * **`UMAP.ipynb`**: Abordagem global (State of the Art) para estratificação da liga.
 * **`📁 clustering`**: Agrupamento matemático (Identidade e DNA das franquias).
   * **`HDBSCAN.ipynb`**: Agrupamento baseado em densidade hierárquica rodando sobre os espaços reduzidos obtidos em 'dim_redux'. Identifica a estratificação das elites, classes médias, e times ruins.
-  * **`GMM.ipynb`**: Modelos de Mistura Gaussiana (Probabilísticos) para *soft clustering* de times em transição tática *(Próximo passo)*.
+  * **`GMM.ipynb`**: Modelos de Mistura Gaussiana (Probabilísticos) para *soft clustering* dos times.
+
+  ### 3. O próximo passo será usar os achados do data mining pra tentar criar modelos com desempenho melhor do que oo baselines estabelecidos na primeira iteração. (Iteração 3)
 
 ## 🛠️ Tecnologias Utilizadas
 
