@@ -1,8 +1,8 @@
 .venv/
-.ensemble/etl/raw_data/raw_injuries.parquet
-.ensemble/etl/raw_data/raw_pbp.parquet
-.ensemble/etl/raw_data/raw_player_stats.parquet
-.ensemble/etl/raw_data/raw_rosters.parquet
-.ensemble/etl/raw_data/raw_schedules.parquet
-.ensemble/etl/raw_data/raw_snaps.parquet
-.ensemble/etl/processed_data/df_features_modelagem.parquet
+ensemble/etl/raw_data/raw_injuries.parquet
+ensemble/etl/raw_data/raw_pbp.parquet
+ensemble/etl/raw_data/raw_player_stats.parquet
+ensemble/etl/raw_data/raw_rosters.parquet
+ensemble/etl/raw_data/raw_schedules.parquet
+ensemble/etl/raw_data/raw_snaps.parquet
+ensemble/etl/processed_data/df_features_modelagem.parquet
